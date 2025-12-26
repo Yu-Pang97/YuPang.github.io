@@ -1,1 +1,583 @@
-<h>we</h>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Your Name | Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Personal academic homepage of Your Name" />
+
+    <!-- 可选：Google 字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --accent: #0077b6;
+            --accent-soft: #e3f2fd;
+            --bg: #f7f7fb;
+            --card-bg: #ffffff;
+            --text: #222;
+            --muted: #666;
+            --border: #e0e0e0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: "Roboto", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* 顶部导航 */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: rgba(247, 247, 251, 0.96);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .nav-inner {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0.6rem 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-left span {
+            font-weight: 600;
+        }
+
+        .nav-right a {
+            margin-left: 1.2rem;
+            font-size: 0.95rem;
+            color: var(--muted);
+        }
+
+        .nav-right a:hover {
+            color: var(--accent);
+        }
+
+        /* 主体布局 */
+        main {
+            max-width: 980px;
+            margin: 1.5rem auto 3rem;
+            padding: 0 1.2rem 2rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 1.5rem 1.6rem;
+            box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+            margin-top: 1.4rem;
+        }
+
+        section h2 {
+            font-size: 1.25rem;
+            margin-bottom: 0.6rem;
+            border-left: 4px solid var(--accent);
+            padding-left: 0.5rem;
+        }
+
+        /* Bio 部分 */
+        .bio-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.3fr);
+            gap: 1.6rem;
+        }
+
+        .bio-name {
+            font-size: 2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .bio-title {
+            font-size: 1.02rem;
+            color: var(--muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .bio-text {
+            font-size: 0.96rem;
+            color: var(--muted);
+        }
+
+        .bio-tags {
+            margin-top: 0.9rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tag {
+            font-size: 0.78rem;
+            padding: 0.22rem 0.55rem;
+            border-radius: 999px;
+            background: var(--accent-soft);
+            color: #0b4f71;
+        }
+
+        .profile-photo {
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            display: block;
+            margin: 0 auto 0.8rem;
+        }
+
+        .bio-right {
+            text-align: center;
+            font-size: 0.92rem;
+            color: var(--muted);
+        }
+
+        .social-links {
+            margin-top: 0.6rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.6rem;
+            font-size: 0.9rem;
+        }
+
+        .social-links a {
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+        }
+
+        .social-links a:hover {
+            border-color: var(--accent);
+        }
+
+        /* Research 部分 */
+        .research-summary {
+            font-size: 0.95rem;
+            color: var(--muted);
+            margin-bottom: 0.8rem;
+        }
+
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .research-item {
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            background: #fafafa;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .research-item img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+        }
+
+        .research-item-inner {
+            padding: 0.7rem 0.9rem 0.8rem;
+        }
+
+        .research-item-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .research-item-text {
+            font-size: 0.9rem;
+            color: var(--muted);
+        }
+
+        /* Publications */
+        .pub-list {
+            list-style: none;
+            padding-left: 0;
+            counter-reset: pub;
+            font-size: 0.93rem;
+        }
+
+        .pub-item {
+            counter-increment: pub;
+            margin-bottom: 0.75rem;
+        }
+
+        .pub-item::before {
+            content: counter(pub) ". ";
+            font-weight: 600;
+            margin-right: 0.2rem;
+        }
+
+        .pub-title {
+            font-weight: 500;
+        }
+
+        .pub-meta {
+            color: var(--muted);
+        }
+
+        .pub-links a {
+            margin-right: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        /* Activities */
+        .activity-list {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .activity-item {
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: #fafafa;
+            padding: 0.8rem 0.9rem 0.9rem;
+        }
+
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .activity-title {
+            font-weight: 500;
+        }
+
+        .activity-date {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        .activity-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 0.35rem;
+        }
+
+        .activity-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 0.5rem;
+            margin-top: 0.3rem;
+        }
+
+        .activity-photos img {
+            width: 100%;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Code 部分 */
+        .code-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1rem;
+            margin-top: 0.3rem;
+        }
+
+        .code-item {
+            border-radius: 14px;
+            border: 1px solid var(--border);
+            background: #fafafa;
+            padding: 0.8rem 0.9rem 0.9rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .code-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .code-desc {
+            font-size: 0.9rem;
+            color: var(--muted);
+            margin-bottom: 0.6rem;
+        }
+
+        .code-links a {
+            display: inline-block;
+            margin-right: 0.6rem;
+            margin-bottom: 0.3rem;
+            font-size: 0.85rem;
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid var(--border);
+        }
+
+        .code-links a:hover {
+            border-color: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--muted);
+            padding: 0.8rem 0 0.4rem;
+        }
+
+        @media (max-width: 720px) {
+            .bio-grid {
+                grid-template-columns: 1fr;
+            }
+            .nav-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+            }
+            .nav-right {
+                font-size: 0.86rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="nav-inner">
+        <div class="nav-left">
+            <!-- 左上角显示你的名字 -->
+            <span>Your Name</span>
+        </div>
+        <nav class="nav-right">
+            <a href="#bio">Bio</a>
+            <a href="#research">Research</a>
+            <a href="#publications">Publications</a>
+            <a href="#activities">Activities</a>
+            <a href="#code">Code</a>
+        </nav>
+    </div>
+</header>
+
+<main>
+    <!-- ========== Bio ========== -->
+    <section class="card" id="bio">
+        <div class="bio-grid">
+            <div>
+                <div class="bio-name">Your Name</div>
+                <div class="bio-title">PhD Candidate in Theoretical Chemistry, Somewhere University</div>
+                <p class="bio-text">
+                    <!-- 这里写你的简介 -->
+                    I am currently a PhD student in Prof. XXX's group at <em>Somewhere University</em>.
+                    My research focuses on nonadiabatic dynamics, excited states, and machine learning
+                    for molecular materials.
+                </p>
+                <div class="bio-tags">
+                    <span class="tag">Nonadiabatic Dynamics</span>
+                    <span class="tag">Machine Learning</span>
+                    <span class="tag">Excited States</span>
+                    <span class="tag">Computational Chemistry</span>
+                </div>
+            </div>
+
+            <div class="bio-right">
+                <!-- 改成你的照片路径：images/bio/profile.jpg -->
+                <img src="images/bio/profile.jpg" alt="Your Name" class="profile-photo" />
+                <p>Your Name<br />Department of XXX<br />Somewhere University</p>
+                <div class="social-links">
+                    <!-- 把链接改成你自己的，没有的就删掉 -->
+                    <a href="mailto:your.email@university.edu">Email</a>
+                    <a href="https://scholar.google.com/" target="_blank">Google Scholar</a>
+                    <a href="https://github.com/your-id" target="_blank">GitHub</a>
+                    <a href="https://orcid.org/0000-0000-0000-0000" target="_blank">ORCID</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== Research ========== -->
+    <section class="card" id="research">
+        <h2>Research</h2>
+        <p class="research-summary">
+            <!-- 研究总结 -->
+            My research centers on developing and applying electronic-structure and nonadiabatic dynamics
+            methods to understand photophysics of organic emitters, and on using machine learning models
+            to accelerate excited-state simulations.
+        </p>
+
+        <div class="research-grid">
+            <!-- 研究方向 1 -->
+            <article class="research-item">
+                <!-- 改成你的图片：images/research/dyn.jpg -->
+                <img src="images/research/dyn.jpg" alt="Nonadiabatic dynamics" />
+                <div class="research-item-inner">
+                    <div class="research-item-title">Nonadiabatic Dynamics</div>
+                    <p class="research-item-text">
+                        Surface hopping simulations of singlet–triplet dynamics, intersystem crossing
+                        and internal conversion in organic molecules.
+                    </p>
+                </div>
+            </article>
+
+            <!-- 研究方向 2 -->
+            <article class="research-item">
+                <!-- 改成你的图片：images/research/ml.jpg -->
+                <img src="images/research/ml.jpg" alt="Machine learning for excited states" />
+                <div class="research-item-inner">
+                    <div class="research-item-title">Machine Learning for Excited States</div>
+                    <p class="research-item-text">
+                        Graph neural networks and fingerprint-based models to predict excited-state
+                        energies and populations, and to guide materials design.
+                    </p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ========== Publications ========== -->
+    <section class="card" id="publications">
+        <h2>Publications</h2>
+        <ol class="pub-list">
+            <!-- 每篇文章复制一块 li.pub-item，改文字和链接 -->
+
+            <li class="pub-item">
+                <span class="pub-title">
+                    Your first paper title goes here.
+                </span>
+                <div class="pub-meta">
+                    <strong>Your Name</strong>, Co-author 1, Co-author 2,
+                    <em>Journal Name</em>, 2024.
+                </div>
+                <div class="pub-links">
+                    <!-- 有 PDF / DOI 就写，没有就删掉 -->
+                    <a href="files/code/example_paper.pdf" target="_blank">PDF</a>
+                    <a href="https://doi.org/xx.xxxx/xxxxxx" target="_blank">DOI</a>
+                </div>
+            </li>
+
+            <li class="pub-item">
+                <span class="pub-title">
+                    Another paper or preprint.
+                </span>
+                <div class="pub-meta">
+                    Author A, <strong>Your Name</strong>, Author C,
+                    <em>arXiv</em>, 2023.
+                </div>
+                <div class="pub-links">
+                    <a href="https://arxiv.org/abs/xxxx.xxxxx" target="_blank">arXiv</a>
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <!-- ========== Activities ========== -->
+    <section class="card" id="activities">
+        <h2>Activities</h2>
+        <div class="activity-list">
+            <!-- 每次组会 / 会议复制一个 activity-item -->
+            <article class="activity-item">
+                <div class="activity-header">
+                    <div class="activity-title">Group meeting on nonadiabatic dynamics</div>
+                    <div class="activity-date">Jan 2025</div>
+                </div>
+                <p class="activity-desc">
+                    Short introduction of this meeting: topics, who presented, key results, etc.
+                </p>
+                <div class="activity-photos">
+                    <!-- 把图片放在 images/activities/ 下，然后改文件名 -->
+                    <img src="images/activities/group_meeting_2025_01.jpg" alt="Group meeting" />
+                    <img src="images/activities/group_meeting_2025_01b.jpg" alt="Group meeting" />
+                </div>
+            </article>
+
+            <article class="activity-item">
+                <div class="activity-header">
+                    <div class="activity-title">Conference XX, City</div>
+                    <div class="activity-date">Sep 2024</div>
+                </div>
+                <p class="activity-desc">
+                    Presented a poster on machine learning for excited-state populations. Met collaborators
+                    from different groups.
+                </p>
+                <div class="activity-photos">
+                    <img src="images/activities/conf_2024_poster.jpg" alt="Conference poster" />
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <!-- ========== Code ========== -->
+    <section class="card" id="code">
+        <h2>Code</h2>
+        <p style="font-size:0.9rem; color:var(--muted); margin-bottom:0.4rem;">
+            Below are small modules and scripts that I maintain. You can download the code or visit the
+            corresponding GitHub repositories.
+        </p>
+
+        <div class="code-grid">
+            <!-- 每个模块一个 code-item。代码文件放在 files/code/ 里，通常是 zip 或单独脚本 -->
+
+            <article class="code-item">
+                <div>
+                    <div class="code-title">FSSH trajectory analysis</div>
+                    <p class="code-desc">
+                        Python tools for analyzing fewest-switches surface hopping trajectories and
+                        computing excited-state populations.
+                    </p>
+                </div>
+                <div class="code-links">
+                    <!-- 这里用的是下载本地文件 -->
+                    <a href="files/code/fssh_tools_v1.zip" download>Download (.zip)</a>
+                    <!-- 也可以附上 GitHub repo 链接 -->
+                    <a href="https://github.com/your-id/fssh-tools" target="_blank">GitHub</a>
+                </div>
+            </article>
+
+            <article class="code-item">
+                <div>
+                    <div class="code-title">GNN for ST gaps</div>
+                    <p class="code-desc">
+                        Example notebook and scripts for training a small GIN model on molecular
+                        singlet–triplet gaps.
+                    </p>
+                </div>
+                <div class="code-links">
+                    <a href="files/code/gnn_st_gap_example.zip" download>Download (.zip)</a>
+                </div>
+            </article>
+
+            <!-- 再加别的模块就复制上面这一块，改标题、描述和文件名即可 -->
+        </div>
+    </section>
+</main>
+
+<footer>
+    &copy; <span id="year"></span> Your Name. All rights reserved.
+</footer>
+
+<script>
+    // 自动填充当前年份
+    document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
