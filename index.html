@@ -291,10 +291,11 @@
 }
 
 .activity-photos img {
-    flex: 1 1 0;           /* 两张图平分一行 */
+    flex: 1 1 0;
     width: 100%;
-    height: 320px;         /* 控制高度，想更高/更矮可以改这个数字 */
-    object-fit: cover;     /* 居中裁剪，保证铺满不变形 */
+    height: 380px;          /* 想多显示一点，可以调大比如 380 / 400 */
+    object-fit: cover;      /* 仍然铺满 */
+    object-position: top;   /* 关键：从图片顶部开始裁剪，保证头完整 */
     border-radius: 10px;
 }
 
