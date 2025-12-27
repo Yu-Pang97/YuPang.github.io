@@ -286,18 +286,16 @@
 /* 默认：竖图左右排（横向排列） */
 .activity-photos {
     display: flex;
-    flex-direction: row;
-    gap: 0.55rem;
-    margin-top: 0.5rem;
+    gap: 0.75rem;
+    margin-top: 0.3rem;
 }
 
-/* 所有活动图片的通用样式 */
 .activity-photos img {
     flex: 1 1 0;
     width: 100%;
-    height: 410px;          /* 可以自己再调 */
-    object-fit: cover;
-    object-position: center;
+    height: 410px;          /* 想多显示一点，可以调大比如 380 / 400 */
+    object-fit: cover;      /* 仍然铺满 */
+    object-position: top;   /* 关键：从图片顶部开始裁剪，保证头完整 */
     border-radius: 10px;
 }
 
