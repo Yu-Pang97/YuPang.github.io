@@ -283,31 +283,33 @@
     margin-bottom: 0.35rem;
 }
 
-/* 关键修改：两张图紧凑排版 */
-activity-photos {
+/* 默认：竖图左右排（横向排列） */
+.activity-photos {
     display: flex;
-    gap: 0.75rem;          /* 两张图之间的距离，想再紧可以改成 0.5rem */
-    margin-top: 0.3rem;
+    flex-direction: row;
+    gap: 0.55rem;
+    margin-top: 0.5rem;
 }
 
+/* 所有活动图片的通用样式 */
 .activity-photos img {
     flex: 1 1 0;
     width: 100%;
-    height: 430px;          /* 想多显示一点，可以调大比如 380 / 400 */
-    object-fit: cover;      /* 仍然铺满 */
-    object-position: top;   /* 关键：从图片顶部开始裁剪，保证头完整 */
+    height: 410px;          /* 可以自己再调 */
+    object-fit: cover;
+    object-position: center;
     border-radius: 10px;
 }
 
-
-/* 特殊情况：横图不够放时，用这个 class 改成上下排 */
-.activity-photos.stack-vertical {
-    flex-direction: column;   /* 改成竖排 */
+/* 特殊：这一组活动要上下排，用 vertical 这个类 */
+.activity-photos.vertical {
+    flex-direction: column; /* 改成「竖着排」 */
 }
 
-.activity-photos.stack-vertical img {
-    height: 260px;            /* 竖排时可以稍微降低高度，看着更紧凑 */
+.activity-photos.vertical img {
+    height: 260px;          /* 竖排时高度稍微小一点，看着更紧凑 */
 }
+
 
 
         /* Code 部分 */
