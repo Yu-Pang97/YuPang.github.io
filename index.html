@@ -298,7 +298,16 @@
     object-position: top;   /* 关键：从图片顶部开始裁剪，保证头完整 */
     border-radius: 10px;
 }
+/* 不裁剪版本：让图片完整显示 */
+.activity-photos.full img {
+    flex: 0 0 auto;       /* 不强行拉伸 */
+    width: 100%;          /* 宽度占满容器 */
+    height: auto;         /* 高度自适应，按比例缩放 */
+    max-height: 480px;    /* 视情况改：控制太高的图不要撑太长 */
+    object-fit: contain;  /* 不裁剪，整张图都显示 */
+}
 
+        
 /* 特殊：这一组活动要上下排，用 vertical 这个类 */
 .activity-photos.vertical {
     flex-direction: column; /* 改成「竖着排」 */
@@ -529,7 +538,7 @@
                 <p class="activity-desc">
                     Oral report
                 </p>
-                <div class="activity-photos vertical">
+                <div class="activity-photos vertical full">
                     <img src="images/activity/a1.jpg" alt="Group meeting" />
                     <img src="images/activity/a2.jpg" alt="Group meeting" />
                 </div>
