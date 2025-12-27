@@ -284,23 +284,21 @@
 }
 
 /* 关键修改：两张图紧凑排版 */
-/* 默认：左右排（竖图） */
-.activity-photos {
+activity-photos {
     display: flex;
-    flex-direction: row;      /* 默认横排 */
-    gap: 0.5rem;
+    gap: 0.75rem;          /* 两张图之间的距离，想再紧可以改成 0.5rem */
     margin-top: 0.3rem;
 }
 
-/* 图片样式 */
 .activity-photos img {
     flex: 1 1 0;
     width: 100%;
-    height: 440px;            /* 可以自己调高/调低 */
-    object-fit: cover;
-    object-position: center;
+    height: 430px;          /* 想多显示一点，可以调大比如 380 / 400 */
+    object-fit: cover;      /* 仍然铺满 */
+    object-position: top;   /* 关键：从图片顶部开始裁剪，保证头完整 */
     border-radius: 10px;
 }
+
 
 /* 特殊情况：横图不够放时，用这个 class 改成上下排 */
 .activity-photos.stack-vertical {
@@ -531,7 +529,7 @@
                 <p class="activity-desc">
                     Oral report
                 </p>
-                <div class="activity-photos">
+                <div class="activity-photos vertical">
                     <img src="images/activity/a1.jpg" alt="Group meeting" />
                     <img src="images/activity/a2.jpg" alt="Group meeting" />
                 </div>
