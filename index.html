@@ -298,25 +298,28 @@
     object-position: top;   /* 关键：从图片顶部开始裁剪，保证头完整 */
     border-radius: 10px;
 }
-/* 不裁剪版本：让图片完整显示 */
-.activity-photos.full img {
-    flex: 0 0 auto;       /* 不强行拉伸 */
-    width: 100%;          /* 宽度占满容器 */
-    height: auto;         /* 高度自适应，按比例缩放 */
-    max-height: 480px;    /* 视情况改：控制太高的图不要撑太长 */
-    object-fit: contain;  /* 不裁剪，整张图都显示 */
-}
 
-        
-/* 特殊：这一组活动要上下排，用 vertical 这个类 */
+/* 竖排（比如两张竖图） */
 .activity-photos.vertical {
-    flex-direction: column; /* 改成「竖着排」 */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 0.75rem;
 }
 
-.activity-photos.vertical img {
-    height: 260px;          /* 竖排时高度稍微小一点，看着更紧凑 */
+/* ⭐ 横图想“完整显示 & 上下排”的特殊情况：vertical + full */
+.activity-photos.vertical.full {
+    display: flex;              /* 不再用 grid，用纵向 flex */
+    flex-direction: column;
+    align-items: stretch;       /* 图片宽度拉到和卡片一样宽 */
+    gap: 0.75rem;
 }
 
+.activity-photos.vertical.full img {
+    width: 100%;
+    height: auto;               /* 高度自适应，不裁剪 */
+    max-width: 100%;
+    object-fit: contain;        /* 或者直接写 none 也行 */
+    border-radius: 10px;
+}
 
 
         /* Code 部分 */
