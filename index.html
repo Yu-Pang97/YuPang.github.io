@@ -246,57 +246,58 @@
             font-size: 0.85rem;
         }
 
-        /* Activities */
-        .activity-list {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr);
-            gap: 1rem;
-            margin-top: 0.3rem;
-        }
+     /* Activities */
+.activity-list {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1rem;
+    margin-top: 0.3rem;
+}
 
-        .activity-item {
-            border-radius: 14px;
-            border: 1px solid var(--border);
-            background: #fafafa;
-            padding: 0.8rem 0.9rem 0.9rem;
-        }
+.activity-item {
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: #fafafa;
+    padding: 0.8rem 0.9rem 0.9rem;
+}
 
-        .activity-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.9rem;
-            margin-bottom: 0.2rem;
-        }
+.activity-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+}
 
-        .activity-title {
-            font-weight: 500;
-        }
+.activity-title {
+    font-weight: 500;
+}
 
-        .activity-date {
-            color: var(--muted);
-            font-size: 0.85rem;
-        }
+.activity-date {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
 
-        .activity-desc {
-            font-size: 0.9rem;
-            color: var(--muted);
-            margin-bottom: 0.35rem;
-        }
+.activity-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+}
 
-        .activity-photos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-            gap: 0.5rem;
-            margin-top: 0.3rem;
-        }
+/* 关键修改：两张图紧凑排版 */
+.activity-photos {
+    display: flex;
+    gap: 0.75rem;          /* 两张图之间的距离，想再紧可以改成 0.5rem */
+    margin-top: 0.3rem;
+}
 
-        .activity-photos img {
+.activity-photos img {
+    flex: 1 1 0;           /* 两张图平分一行 */
     width: 100%;
-    height: auto;        /* 按比例缩放，高度自适应 */
-    max-height: 260px;   /* 可选：限制太高的图片，数字你可以自己调 */
-    object-fit: contain; /* 显示整张图，不裁剪 */
+    height: 320px;         /* 控制高度，想更高/更矮可以改这个数字 */
+    object-fit: cover;     /* 居中裁剪，保证铺满不变形 */
     border-radius: 10px;
 }
+
 
         /* Code 部分 */
         .code-grid {
