@@ -194,10 +194,11 @@
             flex-direction: column;
         }
 
-        .research-item img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
+       .research-item img {
+          width: 100%;
+          height: 300px;        /* 你想要更高就改 280/320 */
+          object-fit: contain;  /* 关键：完整显示，不裁剪 */
+          background: #fff;     /* 留白背景，可改成 #fafafa */
         }
 
         .research-item-inner {
@@ -467,7 +468,7 @@
             <!-- 研究方向 2 -->
             <article class="research-item">
                 <!-- 改成你的图片：images/research/ml.jpg -->
-                <img src="images/research/ml.jpg" alt="Machine Learning for Excited States" />
+                <img src="images/r1.png" alt="Machine Learning for Excited States" />
                 <div class="research-item-inner">
                     <div class="research-item-title">Machine Learning for Excited States</div>
                     <p class="research-item-text">
