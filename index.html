@@ -480,43 +480,64 @@
     </section>
 
     <!-- ========== Publications ========== -->
-    <section class="card" id="publications">
-        <h2>Publications</h2>
-       <ol class="pub-list">
-            <!-- 每篇文章复制一块 li.pub-item，改文字和链接 -->
-        .pub-list {
-  list-style: none;   /* 去掉 1. 2. 3. */
-  padding-left: 0;    /* 去掉左侧缩进 */
-  margin-left: 0;
-}
-            <li class="pub-item">
-                <span class="pub-title">
-                </span>
-                <div class="pub-meta">
-                    <strong>1.Yu Pang</strong>, Qian Peng. Molecular descriptors for high-throughput virtual screening of fluorescence 
-                    emitters with inverted singlet-triplet energy gaps.<em>npj Comput Mater, </em>11, 310, 2025.
-                </div>
-                <div class="pub-links">
-                    <!-- 有 PDF / DOI 就写，没有就删掉 -->
-                    <a href="https://www.nature.com/articles/s41524-025-01792-2.pdf" target="_blank">PDF</a>
-                    <a href="https://www.nature.com/articles/s41524-025-01792-2" target="_blank">DOI</a>
-                </div>
-            </li>
+<section class="card" id="publications">
+  <h2>Publications</h2>
 
-            <li class="pub-item">
-                <span class="pub-title">
-                </span>
-                <div class="pub-meta">
-                    <strong>2.Yu Pang</strong>, Qian, Peng. Molecular Descriptors of Excited-State Property for High-Throughput 
-                    Screening of Organic Photofunctional Materials.<em>J. Phys. Chem. Lett,</em> 15, 34, 2024.
-                </div>
-                <div class="pub-links">
-                   <a href="https://pubs.acs.org/doi/pdf/10.1021/acs.jpclett.4c02058?ref=article_openPDF" target="_blank">PDF</a>
-                    <a href="https://pubs.acs.org/doi/10.1021/acs.jpclett.4c02058" target="_blank">DOI</a>
-                </div>
-            </li>
-        </ol>
-    </section>
+  <!-- 无编号列表：用 ul 更合适 -->
+  <ul class="pub-list">
+    <li class="pub-item">
+      <div class="pub-meta">
+        <strong>Yu Pang</strong>, Qian Peng. Molecular descriptors for high-throughput virtual screening of fluorescence
+        emitters with inverted singlet-triplet energy gaps. <em>npj Comput Mater</em>, 11, 310, 2025.
+      </div>
+      <div class="pub-links">
+        <a href="https://www.nature.com/articles/s41524-025-01792-2.pdf" target="_blank">PDF</a>
+        <a href="https://www.nature.com/articles/s41524-025-01792-2" target="_blank">DOI</a>
+      </div>
+    </li>
+
+    <li class="pub-item">
+      <div class="pub-meta">
+        <strong>Yu Pang</strong>, Qian Peng. Molecular Descriptors of Excited-State Property for High-Throughput
+        Screening of Organic Photofunctional Materials. <em>J. Phys. Chem. Lett.</em>, 15, 34, 2024.
+      </div>
+      <div class="pub-links">
+        <a href="https://pubs.acs.org/doi/pdf/10.1021/acs.jpclett.4c02058?ref=article_openPDF" target="_blank">PDF</a>
+        <a href="https://pubs.acs.org/doi/10.1021/acs.jpclett.4c02058" target="_blank">DOI</a>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<style>
+  /* Publications (no numbering) */
+  .pub-list{
+    list-style: none;
+    padding-left: 0;
+    margin-left: 0;
+    font-size: 0.93rem;
+  }
+
+  .pub-item{
+    margin-bottom: 0.75rem;
+  }
+
+  /* 强制禁用你之前可能残留的 counter/::before 编号 */
+  .pub-item::before{
+    content: "" !important;
+    display: none !important;
+  }
+
+  .pub-meta{
+    color: var(--muted);
+  }
+
+  .pub-links a{
+    margin-right: 0.5rem;
+    font-size: 0.85rem;
+  }
+</style>
+
 
     <!-- ========== Activities ========== -->
     <section class="card" id="activities">
